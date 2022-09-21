@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Formulario
+{% endblock %}
+
+{% block inicio %}
+
+<h1 text-align="center"> RESULTADOS DE LA BUSQUEDA: </h1>
+<br>
+
+ {% for monotributista in monotributistas %}
+    
+    <section id="flista">
+      <div class="form">
+         <ul>
+             <li><b>Nombre:</b> {{monotributista.nombre }}<br></li>
+             <li><b>Apellido:</b> {{monotributista.apellido}}</li>
+             <li><b>Edad:</b> {{monotributista.edad}}</li>
+             <li><b>E-mail:</b> {{monotributista.mail}}</li>                 
+         <ul>
+      </div>
+   </section>
+    <br>
+    {% endfor %}
+
+{% endblock %}

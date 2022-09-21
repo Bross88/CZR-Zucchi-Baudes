@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Formulario
+{% endblock %}
+
+{% block inicio %}
+
+
+    <form action="" method="POST">
+    {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Enviar">
+
+        
+    </form>
+
+    <h2><b> Muestra de DB </b></h2>
+
+    {% for monotributista in monotributistas%}
+       
+    El nombre del monotributista es: {{ monotributista.nombre }}
+    Su apellido:{{ monotributista.apellido }}
+    Su edad:{{ monotributista.edad }}
+    Su E-mail es: {{ monotributista.mail }}
+    <br>
+    <br>
+
+
+    {% endfor%}
+
+
+{% endblock %}

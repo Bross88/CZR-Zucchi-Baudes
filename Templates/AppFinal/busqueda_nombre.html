@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Busqueda Nombre
+{% endblock %}
+
+{% block inicio %}
+
+
+    <form action= "AppFinal/busqueda_nombre_post" method="GET">
+
+    {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Buscar">
+
+
+    </form>
+
+
+{% endblock %}

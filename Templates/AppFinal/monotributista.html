@@ -1,0 +1,34 @@
+
+{% extends 'index.html' %}
+
+{% block title %}
+Monotributistas
+{% endblock %}
+
+{% block inicio %}
+
+    En esta página podrán ver los datos de los monotributistas:
+        <br>
+        <br>
+    Monotributista 1:
+        <br>
+        <br>
+    categoria: {{monotributista1.categoria}}    
+        <br>
+    Nombre: {{monotributista1.nombre}}
+        <br>
+    Apellido: {{monotributista1.apellido}}
+        <br>
+    Edad: {{monotributista1.edad}}
+        <br>
+    Mail: {{monotributista1.mail}}
+    <br>
+    <br>
+
+    {% for monitrubutista in monotributistas %}
+    El nombre del monotributista es {{monotributista.nombre }} y el apellido es {{monotributista.apellido}}
+    
+    <br>
+    {% endfor %}
+
+{% endblock %}

@@ -8,6 +8,10 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Register
 from .forms import *
 from django.http import HttpResponseRedirect
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+
 
 #------------------------LOGIN----------------------------------------------------------------    
 
@@ -48,7 +52,7 @@ def indexreg(request):
         contexto = {}
         
         if request.method == 'POST':
-            form.RegisterForm(request.POST)
+            form=Registerform(request.POST)
 
             if form.is_valid():
                 nombre=form.cleaned_data.get('nombre')
@@ -57,20 +61,20 @@ def indexreg(request):
                 pais=form.cleaned_data.get('pais')
                 email=form.cleaned_data.get('email')
                 cuit=form.cleaned_data.get('cuit')
-                #password=form.cleaned_data.get('password')
+                password=form.cleaned_data.get('password')
 
                 reg = Register(
                     nombre=nombre,
                     apellido=apellido,
-                    telefono_movil=telefono_movil,
+                    telefono_movil=telefono_movil, 
                     pais=pais,  
                     email=email,   
                     cuit=cuit,
-                    #password=password,
+                    password=password,
                 )
                 reg.save()
 
-                return HttpResponseRedirect('/AppFinalInicio/')
+                return redirect('AppFinalInicio')
 
         else:
             form = Registerform()
@@ -81,4 +85,33 @@ def indexreg(request):
         return render(request,'UserAppTemplate/login_reg.html',contexto)
 
 
- 
+ #------------------------------Envio de mail---------------------------------------
+
+def enviar_email(mail):
+    print(mail)
+
+"""    
+    contexto = {'mail' : mail}
+    
+    template = get_template('correo.html')   # o sera appfinalinicio?
+    content = template.render(contexto)
+
+    email = EmailMultiAlternatives(
+        'Correo de prueba',
+        settings.EMAIL_HOST_USER, # quien envia el mail (settings)
+        [mail],# destinatario
+       # cc=                     # enviar copia a X persona
+    )
+
+
+    email.attach_alternative(contexto, 'text/html')
+    email.send()
+"""
+
+
+def index_email(request):
+    if request.method == 'POST':    
+        mail= request.POST.get('mail')
+        enviar_email(mail)
+    return render(request, 'AppFinalInicio', {})
+

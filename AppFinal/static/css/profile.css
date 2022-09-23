@@ -1,0 +1,77 @@
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.header{
+    border: 2px solid rgb(116, 59, 247);
+    border-radius: 15px;
+    text-align: center;
+    height: 300px;
+    padding: 12px;
+    background-image: url("/static/assets/img/fondoperf.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.imagen{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.nombre{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: lightblue;;
+}
+
+.box{
+    border: 2px solid rgb(116, 59, 247);
+    border-radius: 15px;
+    background-image: url("/static/assets/img/fondoperf.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cat{
+    border: 5px solid rgb(166, 152, 197);
+    border-radius: 15px;
+    background-color:rgb(245, 244, 242);
+}
+
+.ct{
+    font-size: 20px;
+}
+
+
+
+input{
+    background-color: rgb(101, 150, 176);
+    border: 1px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+
+
+h3 {
+    color: lemonchiffon;
+    font-size: 22px;
+}
+
+
+
+
+a:hover {
+    color: rgb(12, 2, 71);
+}
+
+
+input:hover{
+    color: blueviolet;
+
+}

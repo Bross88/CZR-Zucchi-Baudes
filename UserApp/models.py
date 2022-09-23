@@ -12,7 +12,7 @@ class Register(models.Model):
     pais=models.CharField(max_length=50)
     email=models.EmailField(max_length=100)
     cuit=models.IntegerField(null=True,blank=True)
-    #password=models.CharField(max_length=40)
+    password=models.CharField(max_length=40)
     
 
 

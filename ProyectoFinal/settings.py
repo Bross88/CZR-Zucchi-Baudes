@@ -123,3 +123,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+#------------------------configuracion de email interno---------------------------------------------------
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER= 'czrcontable@gmail.com'
+EMAIL_HOST_PASSWORD= '1234@qwer'   #no va en texto plano se mete en variable de entorno, se puede cifrar con libreria decouple
+EMAIL_USE_TLS= True

@@ -9,6 +9,9 @@ from AppFinal.forms import *
 from AppFinal.models import Impuestos, Monotributista, ResponsableInscripto
 
 
+def profile(request):
+    
+    return render(request, 'AppFinal/profile.html')
 
 def inicio(request):
     

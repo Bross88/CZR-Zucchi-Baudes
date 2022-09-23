@@ -13,5 +13,6 @@ urlpatterns = [
     # path('eliminar_nombre/', eliminar_nombre, name='AppFinalEliminarNombre'),
     # path('editar_nombre/', editar_nombre, name='AppFinalEditarNombre'),
     path('nosotros/', sobre_nosotros, name='AppFinalnosotros'),
+    path('profile/',profile, name='AppFinalprofile'),
 
 ]

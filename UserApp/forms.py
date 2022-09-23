@@ -10,4 +10,5 @@ class Registerform(forms.ModelForm):
     class Meta:
         model=Register
         fields= "__all__"
-        
+
+

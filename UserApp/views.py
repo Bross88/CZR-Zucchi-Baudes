@@ -115,3 +115,33 @@ def index_email(request):
         enviar_email(mail)
     return render(request, 'AppFinalInicio', {})
 
+
+#------------------------------Avatar---------------------------------------
+def upload_avatar(request):
+    if request.POST == "POST":
+        
+        formulario = AvatarForm(request.POST, request.FILES)
+        
+        if formulario.is_valid():
+            
+            data=formulario.cleanead_data
+            avatar= Avatar.objects.filter(user=data.get("usuario"))
+            
+            if len(avatar) > 0:
+                avatar = avatar[0]
+                avatar.imagen = formulario.cleaned_data["imagen"]
+                avatar.save()
+                
+            else:
+                avatar= Avatar(user=data.get("user"), imagen=data.get("imagen"))
+                avatar.save
+                
+        return redirect("AppFinalInicio")
+    
+    contexto={
+        "form":AvatarForm(),
+        "Enviar": "Crear"    
+    }
+    
+    return render(request, "UserApp/avatar.html", contexto)
+    

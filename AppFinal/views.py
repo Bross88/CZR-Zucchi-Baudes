@@ -17,6 +17,10 @@ def inicio(request):
     
     return render(request, 'Index.html')
 
+def about(request):
+    
+    return render(request, 'AppFinal/about.html')
+
 def sobre_nosotros(request):
     
     return render(request, 'AppFinal/sobre_nosotros.html')

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title> CZR estudio contable </title>
+        <title>  CZR estudio contable </title>
         <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -28,18 +28,19 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">Sobre Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'UserAppregister' %}">Registrarse!</a></li>
-                       
+                    <ul class="navbar-nav ms-auto">          
+                        <li class="nav-item"><a class="nav-link" href="AppFinalMonotributista">Monotributo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="AppFinalResponsable">Responsable Inscripto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalImpuesto' %}">Impuestos!</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalImpuesto' %}">Inversiones</a></li>
+                        <li class="nav-item">{{mesage}}</li>
+                        <li class="nav-linkk">Bienvenido: <span class="col-user">{{user.get_username}}<apan></li>
+                        <a class="nav-linkk" href="{% url 'AppFinalprofile' %}">Mi Perfil</a>
+                        <a class="nav-linkk" href="{% url 'UserAppregister' %}">Cerrar Session</a>
                     </ul>
                 </div>
             </div>
         </nav>
-        {% for mesage in messages %}
-        <h5 class= "msg">{{mesage}}</h5> 
-        {% endfor %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <a href="https://wa.me/541168176276?text=Bienvenido%20a%20Estidio%20CZR%20un%20asesor%20lo%20atendera%20pronto." class="float" target="_blank">
         <i class="fa fa-whatsapp my-float"></i>
@@ -51,7 +52,9 @@
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">CzR Estudio Contable</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Comience a trabajar con profesionales.</h2>
-                        <a class="btn btn-primary" href="{% url 'UserApplogin' %}">Ingresar</a>
+                        {% if  user.is_autenticated %}
+                            <h2 class="text-white-50 mx-auto mt-2 mb-5">BIENVENIDO!!</h2>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -232,3 +235,4 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
+

@@ -9,6 +9,11 @@ from AppFinal.forms import *
 from AppFinal.models import Impuestos, Monotributista, ResponsableInscripto
 
 
+def mapa_interactivo(request):
+    
+    return render(request, 'AppFinal/map.html')
+
+
 def profile(request):
     
     return render(request, 'AppFinal/profile.html')

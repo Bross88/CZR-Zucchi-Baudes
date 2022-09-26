@@ -1,14 +1,24 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import Register
+#from .models import Register
 
 
-#-------------------------------------------------------------------------------------------------------
-
+#--------------registro2-----------------------------------------------------------------------------------------
+"""
 class Registerform(forms.ModelForm):   
     class Meta:
         model=Register
         fields= "__all__"
 
+"""
+#_______________________________REGISTRO________________________________________________________________________
 
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    last_name = forms.CharField(max_length=150)
+    
+
+    class Meta:
+        model=User
+        fields= ('username','last_name', 'email')

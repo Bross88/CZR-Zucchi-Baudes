@@ -15,5 +15,6 @@ urlpatterns = [
     path('nosotros/', sobre_nosotros, name='AppFinalnosotros'),
     path('profile/',profile, name='AppFinalprofile'),
     path('about/', about, name='AppFinalabout'),
+    path('mapa/',mapa_interactivo, name='AppFinalmapainteractivo'),
 
 ]

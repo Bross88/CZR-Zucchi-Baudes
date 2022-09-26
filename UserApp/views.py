@@ -1,25 +1,32 @@
-from dataclasses import dataclass
-from email.errors import NoBoundaryInMultipartDefect
 from pyexpat.errors import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .models import Register
-from .forms import *
+#from .models import Register
+#from .forms import *
 from django.http import HttpResponseRedirect
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from .forms import UserRegisterForm
+#__________________________________________________________________________________________________________________________
 
 
-#------------------------LOGIN----------------------------------------------------------------    
+#___________________vista p2__________________________________________________________________________________
+@login_required
+def pagina_dos(request):
+    return render(request, 'UserAppTemplate/pagina_dos.html')
+
+
+#_________________________LOGIN_____________________________________________________________________________________
 
 def login_request(request): 
     if request.method == 'POST':
         form = AuthenticationForm(request, data = request.POST)
         if form.is_valid():
-            data= form.cleaned_data
+            data= form.cleaned_data 
             
             usuario= data.get('username') # si no recibe info devuelve NONE por defecto evita crasheo
             contra= data.get('password')
@@ -28,13 +35,15 @@ def login_request(request):
 
             if user:  #vamos a verificar si hay usuario cargado
                 login(request, user)
-                messages.info(request, 'inicio de sesion valido')
+                messages.info(request, 'Inicio de session activo')
+
+                return redirect('UserAppPaginaDos')
                 
             else:
                 messages.info(request, 'Error, verifique Usuario o Contraseña')
                 
         else:
-            messages.info(request, 'inicio de sesion invalido')
+            messages.info(request, 'Inicio de sesion erroneo, por favor verifique su usuario y contraseña')
             
         return redirect('AppFinalInicio')
 
@@ -43,11 +52,11 @@ def login_request(request):
         
     }
     return render(request, 'UserAppTemplate/login.html', contexto)
+ 
 
-#---------------------------------------------------------------------------------------------------------------
 
-    #-------registro---------------------------------------------------------------------------------------------------
-
+#________________________________REGISTRO2____________________________________________________________________________
+"""
 def indexreg(request):
         contexto = {}
         
@@ -84,13 +93,11 @@ def indexreg(request):
 
         return render(request,'UserAppTemplate/login_reg.html',contexto)
 
-
- #------------------------------Envio de mail---------------------------------------
+"""
+ #_________________________________ENVIO DE MAIL________________________________________________________
 
 def enviar_email(mail):
-    print(mail)
 
-"""    
     contexto = {'mail' : mail}
     
     template = get_template('correo.html')   # o sera appfinalinicio?
@@ -106,7 +113,7 @@ def enviar_email(mail):
 
     email.attach_alternative(contexto, 'text/html')
     email.send()
-"""
+
 
 
 def index_email(request):
@@ -114,4 +121,75 @@ def index_email(request):
         mail= request.POST.get('mail')
         enviar_email(mail)
     return render(request, 'AppFinalInicio', {})
+
+
+
+#_______________________________EDITAR USUARIO______________________________________________________________________
+"""
+@login_required
+def editar_usuario(request):
+    usuario=request.user
+    if request.method == 'POST':
+        form=Registerform(request.POST)
+        if form.is_valid():
+            
+            data = form.cleaned_data()
+
+
+            usuario.nombre = data.get('nombre')
+            usuario.apellido = data.get('apellido')
+            usuario.telefono_movil = data.get('telefono_movil')
+            usuario.pais = data.get('pais')
+            usuario.email = data.get('email')
+            usuario.cuit = data.get('cuit')
+            usuario.password = data.get('password')
+
+
+            usuario.save()
+
+    contexto ={
+        'form': Registerform(
+            initial = {
+                'nombre':usuario.nombre,
+                'apellido':usuario.apellido,
+                'telefono_movil':usuario.telefono_movil,
+                'pais':usuario.pais,
+                'email':usuario.email,
+                'cuit':usuario.cuit,
+                'password':usuario.password,
+               
+            }),
+            'nombre_form': 'registro'
+    }
+    return render(request, 'Editar.html',contexto)
+
+"""
+#_______________________REGISTRO_____________________________________________________________________________________________
+
+
+def indexreg(request):
+    if request.method == 'POST':
+        form=UserRegisterForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            #Avatar= Avatar(user=user,imagen=form.cleaned.data.get('imagen'))
+            #Avatar.save()
+
+            messages.info(request,'Registro Satisfactorio')
+
+        else:
+            messages.info(request,'Error al Registrar')
+        return redirect('AppFinalInicio')
+
+    contexto= {
+                'form' : UserRegisterForm(),
+            }
+
+    return render(request,'UserAppTemplate/login_reg.html',contexto)
+
+
+
+
 

@@ -11554,7 +11554,12 @@ body {
     color: whitesmoke;
   }
 
-
+#mainNav .img-usr{
+  height: 60px;
+  border: 1px #1891a7;
+  border-radius: 50%;
+  align-items: center;
+}
 
 
 .col-user{

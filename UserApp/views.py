@@ -10,7 +10,9 @@ from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm,AvatarForm,Avatar
+
+
 #__________________________________________________________________________________________________________________________
 
 
@@ -208,10 +210,10 @@ def upload_avatar(request):
                 avatar = avatar[0]
                 avatar.imagen = formulario.cleaned_data["imagen"]
                 avatar.save()
-                
+                 
             else:
                 avatar= Avatar(user=data.get("user"), imagen=data.get("imagen"))
-                avatar.save
+                avatar.save()
                 
         return redirect("AppFinalInicio")
     

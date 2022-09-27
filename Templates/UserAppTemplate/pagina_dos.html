@@ -35,8 +35,9 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalImpuesto' %}">Inversiones</a></li>
                         <li class="nav-item">{{mesage}}</li>
                         <li class="nav-linkk">Bienvenido: <span class="col-user">{{user.get_username}}<apan></li>
+                        <img class= "img-usr" src="{{ user.avatar.imagen.url }}" alt="">
                         <a class="nav-linkk" href="{% url 'AppFinalprofile' %}">Mi Perfil</a>
-                        <a class="nav-linkk" href="{% url 'UserAppregister' %}">Cerrar Session</a>
+                        <a class="nav-linkk" href="{% url 'UserApplogout' %}">Cerrar Session</a>
                     </ul>
                 </div>
             </div>

@@ -16,7 +16,7 @@
 <body>
     
     <div class="header">
-        <img  class="imagen" src="/static/assets/img/imgperf.jpg">
+        <img  class="imagen" src="{{ user.avatar.imagen.url }}">
             <h1 class="nombre">Bienvenido: <span class="resaltador">{{user.get_username}}</span></h1>
     </div>
     <div class="cat">
@@ -36,9 +36,15 @@
     </ul>
     </div>
     <div class="box">
+        <form action ""method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form.as_table }}
+            
         <h3><b>Foto perfil:</b> foto</h3>
         <input type="Submit" value="Mofificar">
-        
+        </form>
+
         <h3><b>Nombre:</b> Nombre</h3>
         <input type="Submit" value="Mofificar">    
 

@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import Avatar, Register
+from .models import Avatar
 
 
 #--------------registro2-----------------------------------------------------------------------------------------
@@ -14,6 +14,21 @@ class Registerform(forms.ModelForm):
 """
 #_______________________________REGISTRO________________________________________________________________________
 
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    last_name = forms.CharField(max_length=150)
+    
+
+    class Meta:
+        model=User
+        fields= ('username','last_name', 'email')
+
+
+
+
+
+
+#___________________________________________AVATAR__________________________________________
 class AvatarForm(forms.ModelForm):
     
     class Meta:

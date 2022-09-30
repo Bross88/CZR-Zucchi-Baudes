@@ -2,16 +2,17 @@ from pyexpat.errors import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login #PasswordChangeForm 
 #from .models import Register
 #from .forms import *
-from django.http import HttpResponseRedirect
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm,AvatarForm,Avatar
-
+from django.contrib.auth.models import User
+#from django.views.generic import FormView        perfil password change
+#from django.urls import reverse_lazy             perfil password change
 
 #__________________________________________________________________________________________________________________________
 
@@ -37,7 +38,7 @@ def login_request(request):
 
             if user:  #vamos a verificar si hay usuario cargado
                 login(request, user)
-                messages.info(request, 'Inicio de session activo')
+                
 
                 return redirect('UserAppPaginaDos')
                 
@@ -140,13 +141,9 @@ def editar_usuario(request):
 
             usuario.nombre = data.get('nombre')
             usuario.apellido = data.get('apellido')
-            usuario.telefono_movil = data.get('telefono_movil')
-            usuario.pais = data.get('pais')
             usuario.email = data.get('email')
-            usuario.cuit = data.get('cuit')
-            usuario.password = data.get('password')
-
-
+           
+            
             usuario.save()
 
     contexto ={
@@ -158,7 +155,7 @@ def editar_usuario(request):
                 'pais':usuario.pais,
                 'email':usuario.email,
                 'cuit':usuario.cuit,
-                'password':usuario.password,
+                
                
             }),
             'nombre_form': 'registro'
@@ -224,3 +221,34 @@ def upload_avatar(request):
     
     return render(request, "UserApp/avatar.html", contexto)
     
+
+#__________________________________________profile view_______________________________________________
+def profile(request,username=None):
+    current_user=request.user
+    if username:
+        user = User.objects.get(username=username)
+        user = User.objects.get(email=user.email)
+        user = User.objects.get(last_name=user.last_name)
+
+    else:
+        user=current_user
+    return render(request, "UserApp/profile.html", {'user':user},{'email' : user.email},{'last_name',user.last_name})
+
+
+#___________________________________________profile password_________________________________
+"""
+@login_required
+class UserChangePasswordView(FormView):
+    model = User
+    form_class = PasswordChangeForm
+    template_name = 'AppFinal/profile.html'
+    success_url: reverse_lazy('login')
+
+    def get_form(self, form_class=None):
+        form =PasswordChangeForm(user=self.request.user)
+        return form
+
+"""
+
+
+

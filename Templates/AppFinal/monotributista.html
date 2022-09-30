@@ -1,34 +1,48 @@
 
-{% extends 'index.html' %}
-
-{% block title %}
-Monotributistas
-{% endblock %}
-
-{% block inicio %}
-
-    En esta página podrán ver los datos de los monotributistas:
-        <br>
-        <br>
-    Monotributista 1:
-        <br>
-        <br>
-    categoria: {{monotributista1.categoria}}    
-        <br>
-    Nombre: {{monotributista1.nombre}}
-        <br>
-    Apellido: {{monotributista1.apellido}}
-        <br>
-    Edad: {{monotributista1.edad}}
-        <br>
-    Mail: {{monotributista1.mail}}
-    <br>
-    <br>
-
-    {% for monitrubutista in monotributistas %}
-    El nombre del monotributista es {{monotributista.nombre }} y el apellido es {{monotributista.apellido}}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
     
-    <br>
-    {% endfor %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de registro</title>
+    <link href="/static/css/stylereg.css" rel="stylesheet" />
 
-{% endblock %}
+    <style>
+        body{
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       
+    </STYLE>
+    
+
+
+
+</head>
+
+
+<body background= "{% static 'assets/img/contacto.jpg' %}">
+
+    
+<section id="PRINCIPAL">
+    
+    <div class="registro">
+        <h2>Monotriburo</h2>
+        
+        <form action="" method= "POST">{% csrf_token %}
+       
+            {{ form.as_table }}
+            
+            <br>
+            <button type="submit" class="btn-reg">Enviar</button>
+            
+        </form>
+        <a href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
+    </div>
+</section>
+
+</body>
+</html>

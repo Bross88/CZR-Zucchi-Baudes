@@ -29,10 +29,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">          
-                        <li class="nav-item"><a class="nav-link" href="AppFinalMonotributista">Monotributo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="AppFinalResponsable">Responsable Inscripto</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalImpuesto' %}">Impuestos!</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalImpuesto' %}">Inversiones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalMonotributista' %}">Gestion Monotributo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalprofile' %}">Responsable Inscripto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalprofile' %}">Impuestos!</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AppFinalprofile' %}">Inversiones</a></li>
                         <li class="nav-item">{{mesage}}</li>
                         <li class="nav-linkk">Bienvenido: <span class="col-user">{{user.get_username}}<apan></li>
                         <img class= "img-usr" src="{{ user.avatar.imagen.url }}" alt="">

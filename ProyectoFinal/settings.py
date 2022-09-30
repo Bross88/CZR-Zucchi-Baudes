@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import os
+#from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -103,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#AUTH_USER_MODEL ='UserApp.usuario'   #indica el modelo a reemplazar por sistema buscando en carpeta App
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -132,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.googlemail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER= 'czrcontable@gmail.com'
-EMAIL_HOST_PASSWORD= '1234@qwer'   #no va en texto plano se mete en variable de entorno, se puede cifrar con libreria decouple
+EMAIL_HOST_PASSWORD= '1234@qwer'   #no va en texto plano se mete en variable de entorno, se puede cifrar con libreria decouple(investigar)
 EMAIL_USE_TLS= True
 
 
@@ -140,3 +142,9 @@ EMAIL_USE_TLS= True
 
 MEDIA_URL= '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+
+"""
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_REDIRECT_URL = reverse_lazy('home')
+"""

@@ -24,6 +24,8 @@ class UserRegisterForm(UserCreationForm):
         fields= ('username','last_name', 'email')
 
 
+#_____________________________editar usuario perfil___________________________________________
+
 
 
 

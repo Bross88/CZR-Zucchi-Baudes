@@ -18,6 +18,7 @@
     <div class="header">
         <img  class="imagen" src="{{ user.avatar.imagen.url }}">
             <h1 class="nombre">Bienvenido: <span class="resaltador">{{user.get_username}}</span></h1>
+            <a class="exit" href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
     </div>
     <div class="cat">
         <h1> Categorias Activas: </h1>
@@ -41,20 +42,20 @@
 
             {{ form.as_table }}
             
-        <h3><b>Foto perfil:</b> foto</h3>
+        <h3><b>Foto perfil:</b></h3><img  class="imagen" src="{{ user.avatar.imagen.url }}">
         <input type="Submit" value="Mofificar">
         </form>
 
-        <h3><b>Nombre:</b> Nombre</h3>
+        <h3><b>Nombre:</b> <span class="resaltador">{{user.get_username}}</span></h3>
         <input type="Submit" value="Mofificar">    
 
-        <h3><b>Apelliido:</b> Apellido</h3>
+        <h3><b>Apelliido:</b> <span class="resaltador">{{user.last_name}}</span></h3>
         <input type="Submit" value="Mofificar">
 
-        <h3><b>E-mail:</b> Email</h3>
-        <input type="Submit" value="Mofificar">  
+        <h3><b>E-mail:</b> <span class="resaltador">{{user.email}}</span></h3>
+        <input type="Submit" value="Mofificar">
 
-        <h3><b>Password:</b> *******</h3>
+        <h3><b>Password:</b> <span class="resaltador">{{user.password}}</span></h3>
         <input type="Submit" value="Mofificar">
         
     <div>

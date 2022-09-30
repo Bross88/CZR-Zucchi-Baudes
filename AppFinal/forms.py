@@ -1,5 +1,5 @@
 from django import forms
-
+from. models import Monotributista
 
 class Formulario(forms.Form):
     nombre = forms.CharField(max_length=30)
@@ -9,3 +9,11 @@ class Formulario(forms.Form):
 
 class BusquedaNombreFormulario(forms.Form):
     nombre = forms.CharField()
+
+
+class Categorias(forms.ModelForm):
+    class Meta:
+        model= Monotributista
+        fields = ['categoria','actividad']
+
+    

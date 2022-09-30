@@ -5,7 +5,7 @@ from mailbox import NoSuchMailboxError
 from django.http import HttpResponse
 from datetime import datetime
 from django.contrib import messages
-from AppFinal.forms import *
+from AppFinal.forms import Formulario,BusquedaNombreFormulario,Categorias
 from AppFinal.models import Impuestos, Monotributista, ResponsableInscripto
 
 
@@ -30,20 +30,20 @@ def sobre_nosotros(request):
     
     return render(request, 'AppFinal/sobre_nosotros.html')
 
-
-def monotributista(request): 
-    
-    monotributista1 = Monotributista(categoria="A", nombre="José", apellido="Hernandez", edad=55 , mail="josehernandez@gmail.com")
-    monotributista1.save()
-    
-    #monotributistas = Monotributista.objects.all()[:3]
+#________________MONOTRIBUTISTA VIEW select_________________________________________
+def monotributista(request):
     
     contexto = {
-        'monotributista1':monotributista1,
-                  }
+        
+        'form': Categorias(),
+    
+    }
+    
     return render(request, 'AppFinal/monotributista.html', contexto)
 
 
+
+#________________R I VIEW_________________________________________
 def responsable_inscripto(request):
     
     responsable_inscripto1 = ResponsableInscripto(sociedad="S.R.L.", nombre="Maria", apellido="Gomez", edad=44 , mail="mariagomez@gmail.com")
@@ -57,6 +57,9 @@ def responsable_inscripto(request):
     return render(request, 'AppFinal/responsableinscripto.html', contexto)
 
 
+
+
+#_______________IMPUESTOS VIEW_________________________________________
 def impuestos(request):
     
     impuestos1 = Impuestos(asesoramientofiscal="I.V.A", nombre="Marcos", apellido="Fernandez", edad=65 , mail="marcosfernandez@gmail.com")
@@ -69,6 +72,13 @@ def impuestos(request):
             }
     return render(request, 'AppFinal/impuesto.html', contexto)
 
+
+
+
+
+
+
+#___________________________________________________________________________________________
 
 def formulario(request):
     

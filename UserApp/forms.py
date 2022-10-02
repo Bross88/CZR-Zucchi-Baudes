@@ -25,7 +25,15 @@ class UserRegisterForm(UserCreationForm):
 
 
 #_____________________________editar usuario perfil___________________________________________
+class UserEditForm(forms.ModelForm):
+    email = forms.EmailField(label='Email')
+    last_name = forms.CharField(label='apellido',max_length=50)
+    username= forms.CharField(label='nombre',max_length=50)
+    
 
+    class Meta:
+        model=User
+        fields= ('username','last_name', 'email')
 
 
 

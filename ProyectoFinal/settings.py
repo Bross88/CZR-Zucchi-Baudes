@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import os
+from decouple import config
 #from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -135,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST = 'smtp.googlemail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER= 'czrcontable@gmail.com'
-EMAIL_HOST_PASSWORD= '1234@qwer'   #no va en texto plano se mete en variable de entorno, se puede cifrar con libreria decouple(investigar)
+EMAIL_HOST_PASSWORD=config('Mail_Password_Admin')   #no va en texto plano se mete en variable de entorno, se puede cifrar con libreria decouple(investigar)
 EMAIL_USE_TLS= True
 
 

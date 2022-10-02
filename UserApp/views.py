@@ -9,7 +9,7 @@ from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm,AvatarForm,Avatar
+from .forms import UserRegisterForm,AvatarForm,Avatar,UserEditForm
 from django.contrib.auth.models import User
 #from django.views.generic import FormView        perfil password change
 #from django.urls import reverse_lazy             perfil password change
@@ -135,24 +135,28 @@ def editar_usuario(request):
     #user_info= User.objects.get(id=user)
     
     if request.method == 'POST':
-        form=UserRegisterForm(request.POST)
+        form=UserEditForm(request.POST)
         if form.is_valid():
             
-            data = form.cleaned_data()
+            data = form.cleaned_data
 
 
-            user.nombre = data.get('nombre')
-            user.apellido = data.get('apellido')
+            user.username = data.get('username')
+            user.last_name = data.get('last_name')
             user.email = data.get('email')
            
             
             user.save()
+            messages.success(request,'Satisfactorio')
+            return redirect('AppFinalInicio')
+        else:
+            messages.error(request,form.errors)
 
     contexto ={
-        'form': UserRegisterForm(
+        'form': UserEditForm(
             initial = {
-                'nombre':user.username,
-                'apellido':user.last_name,
+                'username':user.username,
+                'last_name':user.last_name,
                 'email':user.email,
                 
                 

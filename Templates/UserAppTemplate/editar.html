@@ -12,7 +12,9 @@
     <style>
         body{
             background-repeat: no-repeat;
-            background-size: cover;
+            
+            width: 300%;
+            height: 90vh;
         }
        
     </STYLE>
@@ -23,23 +25,36 @@
 </head>
 
 
-<body background= "{% static 'assets/img/contacto.jpg' %}">
+<body>
 
     
-<section id="PRINCIPAL">
+<section >
     
-    <div class="registro">
+    <form action="" method= "POST">{% csrf_token %}
+                    
+       
+        {{ form.as_table }}
+
+                
+        <br>
+        <br>
+        
+        
+        <button>editar</button>
+
+        
+                
+    </form>
+    
+    <div>
         <h2>Editar Perfil</h2>
         
-        <form action="" method= "POST">{% csrf_token %}
        
-            {{ form.as_table }}
-            
-            <br>
-            <button type="submit" class="btn-reg">Enviar</button>
-            
-        </form>
-        <a href="{% url 'AppFinalInicio' %}" class="btn-back">Volver</a>
+        <a href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
+
+        {% for mesage in messages %}
+        <h5 class= "msg">{{mesage}}</h5> 
+        {% endfor %}
     </div>
 </section>
 

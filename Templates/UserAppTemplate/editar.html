@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link href="/static/css/stylereg.css" rel="stylesheet" />
+
+    <style>
+        body{
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       
+    </STYLE>
+    
+
+
+
+</head>
+
+
+<body background= "{% static 'assets/img/contacto.jpg' %}">
+
+    
+<section id="PRINCIPAL">
+    
+    <div class="registro">
+        <h2>Editar Perfil</h2>
+        
+        <form action="" method= "POST">{% csrf_token %}
+       
+            {{ form.as_table }}
+            
+            <br>
+            <button type="submit" class="btn-reg">Enviar</button>
+            
+        </form>
+        <a href="{% url 'AppFinalInicio' %}" class="btn-back">Volver</a>
+    </div>
+</section>
+
+</body>
+</html>

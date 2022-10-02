@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina de registro</title>
+    <title>Mi Perfil</title>
     <link href="/static/css/profile.css" rel="stylesheet" />
 
 </head>
@@ -19,6 +19,7 @@
         <img  class="imagen" src="{{ user.avatar.imagen.url }}">
             <h1 class="nombre">Bienvenido: <span class="resaltador">{{user.get_username}}</span></h1>
             <a class="exit" href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
+            <a href="{% url 'UserAppeditar' %}" target="_blank">Editar perfil</a>
     </div>
     <div class="cat">
         <h1> Categorias Activas: </h1>

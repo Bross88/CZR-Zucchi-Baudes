@@ -128,41 +128,45 @@ def index_email(request):
 
 
 #_______________________________EDITAR USUARIO______________________________________________________________________
-"""
+
 @login_required
 def editar_usuario(request):
-    usuario=request.user
+    user=request.user                   #.id
+    #user_info= User.objects.get(id=user)
+    
     if request.method == 'POST':
-        form=Registerform(request.POST)
+        form=UserRegisterForm(request.POST)
         if form.is_valid():
             
             data = form.cleaned_data()
 
 
-            usuario.nombre = data.get('nombre')
-            usuario.apellido = data.get('apellido')
-            usuario.email = data.get('email')
+            user.nombre = data.get('nombre')
+            user.apellido = data.get('apellido')
+            user.email = data.get('email')
            
             
-            usuario.save()
+            user.save()
 
     contexto ={
-        'form': Registerform(
+        'form': UserRegisterForm(
             initial = {
-                'nombre':usuario.nombre,
-                'apellido':usuario.apellido,
-                'telefono_movil':usuario.telefono_movil,
-                'pais':usuario.pais,
-                'email':usuario.email,
-                'cuit':usuario.cuit,
+                'nombre':user.username,
+                'apellido':user.last_name,
+                'email':user.email,
+                
                 
                
             }),
             'nombre_form': 'registro'
     }
-    return render(request, 'Editar.html',contexto)
+    return render(request, 'UserAppTemplate/editar.html',contexto)
 
-"""
+#________________________________________editarviews________________________________
+
+
+
+
 #_______________________REGISTRO_____________________________________________________________________________________________
 
 

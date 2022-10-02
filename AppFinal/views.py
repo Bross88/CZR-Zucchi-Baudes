@@ -5,8 +5,8 @@ from mailbox import NoSuchMailboxError
 from django.http import HttpResponse
 from datetime import datetime
 from django.contrib import messages
-from AppFinal.forms import Formulario,BusquedaNombreFormulario,Categorias
-from AppFinal.models import Impuestos, Monotributista, ResponsableInscripto
+from AppFinal.forms import Categorias,CategoriasResponsableInscripto,CategoriasImpuestos,CategoriasInversiones #,Formulario,BusquedaNombreFormulario
+
 
 
 def mapa_interactivo(request):
@@ -32,7 +32,7 @@ def sobre_nosotros(request):
 
 #________________MONOTRIBUTISTA VIEW select_________________________________________
 def monotributista(request):
-    
+
     contexto = {
         
         'form': Categorias(),
@@ -46,14 +46,12 @@ def monotributista(request):
 #________________R I VIEW_________________________________________
 def responsable_inscripto(request):
     
-    responsable_inscripto1 = ResponsableInscripto(sociedad="S.R.L.", nombre="Maria", apellido="Gomez", edad=44 , mail="mariagomez@gmail.com")
-    responsable_inscripto1.save()
-    
-    #responsables = ResponsableInscripto.objects.all()[:3]
-    
     contexto = {
-        "responsable_inscripto1":responsable_inscripto1,
-            }
+        
+        'form': CategoriasResponsableInscripto(),
+    
+    }
+    
     return render(request, 'AppFinal/responsableinscripto.html', contexto)
 
 
@@ -62,16 +60,26 @@ def responsable_inscripto(request):
 #_______________IMPUESTOS VIEW_________________________________________
 def impuestos(request):
     
-    impuestos1 = Impuestos(asesoramientofiscal="I.V.A", nombre="Marcos", apellido="Fernandez", edad=65 , mail="marcosfernandez@gmail.com")
-    impuestos1.save()
-        
-    #impuestos = Impuestos.objects.all()[:3]
-    
     contexto = {
-        "impuestos1":impuestos1,
-            }
+        
+        'form': CategoriasImpuestos(),
+    
+    }
+    
     return render(request, 'AppFinal/impuesto.html', contexto)
 
+
+#_______________Inversiones VIEW_________________________________________
+
+def inversiones(request):
+        
+    contexto = {
+        
+        'form': CategoriasInversiones(),
+     
+    }
+    
+    return render(request, 'AppFinal/inversiones.html', contexto)
 
 
 
@@ -79,7 +87,7 @@ def impuestos(request):
 
 
 #___________________________________________________________________________________________
-
+"""
 def formulario(request):
     
     if request.method == 'POST':
@@ -129,7 +137,7 @@ def busqueda_nombre_post(request):
         }
     
     return render (request, 'AppFinal/formulario_filtrado.html', contexto)
-
+"""
 
 
 

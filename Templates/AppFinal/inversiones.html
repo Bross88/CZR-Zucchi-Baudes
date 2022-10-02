@@ -1,13 +1,14 @@
 {% extends 'UserAppTemplate/pagina_dos.html' %}
 {% load static %}
 
+
 {% block content %}
 <div class="content-sec">
     <div class="bs-nav">
     </div>
     <div class="mnt-ctr">
-        <h2 class="tit-mnt">Alta Responsables Inscriptos</h2>
-        <h3> Seleccione la categoria y la actividad a realizar: </h3>
+        <h2 class="tit-mnt">Invetir</h2>
+        <h3> Seleccione el tipo de inversion, el monto, y su moneda de eleccion: </h3>
         <div class="form-imp">
 
             <form action="" method= "POST">{% csrf_token %}
@@ -19,11 +20,13 @@
                 <br>
                 <br>
                 
-                <button id="btnsSuccess" >Solicitar Alta</button>
+                
+                <button id="btnSuccess" >Invertir</button>
 
                 
                         
             </form>
+            
             
         
         <br>
@@ -32,5 +35,6 @@
     </div>
 </div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="/static/js/ri.js"></script>
+<script src="/static/js/notificaciones.js"></script>
 {% endblock %}
+

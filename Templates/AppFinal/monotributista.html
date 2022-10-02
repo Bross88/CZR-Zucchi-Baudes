@@ -1,48 +1,36 @@
-
+{% extends 'UserAppTemplate/pagina_dos.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina de registro</title>
-    <link href="/static/css/stylereg.css" rel="stylesheet" />
 
-    <style>
-        body{
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+{% block content %}
+<div class="content-sec">
+    <div class="bs-nav">
+    </div>
+    <div class="mnt-ctr">
+        <h2 class="tit-mnt">Altas Monotributo</h2>
+        <h3> Seleccione la categoria y la actividad a realizar: </h3>
+        <div class="form-imp">
+
+            <form action="" method= "POST">{% csrf_token %}
+                    
        
-    </STYLE>
-    
+                {{ form.as_table }}
 
+                        
+                <br>
+                <br>
+                
+                <button id="btSuccess" >Solicitar Alta</button>
 
-
-</head>
-
-
-<body background= "{% static 'assets/img/contacto.jpg' %}">
-
-    
-<section id="PRINCIPAL">
-    
-    <div class="registro">
-        <h2>Monotriburo</h2>
+                
+                        
+            </form>
+            
         
-        <form action="" method= "POST">{% csrf_token %}
-       
-            {{ form.as_table }}
-            
-            <br>
-            <button type="submit" class="btn-reg">Enviar</button>
-            
-        </form>
+        <br>
+        <br>
         <a href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
     </div>
-</section>
-
-</body>
-</html>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/monotributo.js"></script>
+{% endblock %}

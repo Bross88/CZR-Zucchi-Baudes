@@ -1,34 +1,39 @@
+{% extends 'UserAppTemplate/pagina_dos.html' %}
+{% load static %}
 
-{% extends 'index.html' %}
 
-{% block title %}
-Impuestos
-{% endblock %}
+{% block content %}
+<div class="content-sec">
+    <div class="bs-nav">
+    </div>
+    <div class="mnt-ctr">
+        <h2 class="tit-mnt">Alta de Impuestos</h2>
+        <h3> Seleccione el tipo de inversion, el monto, y su moneda de eleccion: </h3>
+        <div class="form-imp">
 
-{% block inicio %}
+            <form action="" method= "POST">{% csrf_token %}
+                    
+       
+                {{ form.as_table }}
 
-    En esta página podrán ver los datos de los impuestos:
-        <br>
-        <br>
-    Impuesto 1:
-        <br>
-        <br>
-    AsesoramientoFiscal:{{impuestos1.asesoramientoFiscal}}
-        <br>
-    Nombre: {{impuestos1.nombre}}
-        <br>
-    Apellido: {{impuestos1.apellido}}
-        <br>
-    Edad: {{impuestos1.edad}}
-        <br>
-    Mail: {{impuestos1.mail}}
-        <br>
-        <br>
+                        
+                <br>
+                <br>
+                
+                
+                <button id="bttSuccess" >Solicitar Alta</button>
 
-    {% for impuesto in impuestos %}
-    El nombre del impuesto es {{impuestos.nombre }} y el apellido es {{impuestos.apellido}}
-    
-    <br>
-    {% endfor %}
-
+                
+                        
+            </form>
+            
+            
+        
+        <br>
+        <br>
+        <a href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
+    </div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/impuestos.js"></script>
 {% endblock %}

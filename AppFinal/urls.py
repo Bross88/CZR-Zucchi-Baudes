@@ -1,12 +1,13 @@
 from django.urls import path
-from AppFinal.views import mapa_interactivo,profile,inicio,about,sobre_nosotros,monotributista
+from AppFinal.views import mapa_interactivo,profile,inicio,about,sobre_nosotros,monotributista,impuestos,responsable_inscripto,inversiones
 
 urlpatterns = [
-    
+     
     path('', inicio, name='AppFinalInicio'),
     path('monotributista/', monotributista, name='AppFinalMonotributista'),
-    #path('responsableinscripto/', responsable_inscripto, name='AppFinalResponsable'),
-    #path('impuesto/', impuestos, name='AppFinalImpuesto'),
+     path('responsableinscripto/', responsable_inscripto, name='AppFinalResponsable'),
+    path('impuesto/', impuestos, name='AppFinalImpuesto'),
+    path('inversiones/', inversiones, name='AppFinalInversiones'),
     #path('formulario/', formulario, name='AppFinalFormulario'),
     #path('busqueda_nombre/', busqueda_nombre, name='AppFinalBusquedaNombre'),
     #path('busqueda_nombre_post/', busqueda_nombre_post, name='AppFinalBusquedaNombrePost'),

@@ -92,3 +92,26 @@ input:hover{
 .exit:hover{
     color: aqua;
 }
+
+
+
+.form{
+    border: 2px solid rgb(116, 59, 247);
+    border-radius: 15px;
+    background-image: url("/static/assets/img/fondoperf.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 50vh;
+    text-align: center;
+    color: aliceblue;
+    font-size: 25px;
+}
+
+#borrar{
+    border: 3px solid rgb(116, 59, 247);
+    border-radius: 10px;
+    position: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+}

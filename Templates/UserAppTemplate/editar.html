@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,56 +8,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link href="/static/css/stylereg.css" rel="stylesheet" />
-
-    <style>
-        body{
-            background-repeat: no-repeat;
-            
-            width: 300%;
-            height: 90vh;
-        }
-       
-    </STYLE>
-    
-
-
+    <link href="/static/css/profile.css" rel="stylesheet" />
 
 </head>
 
 
 <body>
-
     
-<section >
+    <div class="header">
+        <img  class="imagen" src="{{ user.avatar.imagen.url }}">
+            <h1 class="nombre">Bienvenido: <span class="resaltador">{{user.get_username}}</span></h1>
+            <a class="exit" href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
+            <h1 class="nombre">Editar Perfil</h1>
+            
+    </div>
+    <div class="cat">
+        
+    <ul>
+        <li class="ct">
+            
+        </li>
     
-    <form action="" method= "POST">{% csrf_token %}
-                    
-       
-        {{ form.as_table }}
-
-                
-        <br>
-        <br>
-        
-        
-        <button>editar</button>
-
-        
-                
-    </form>
-    
+        <li class="ct">
+            
+        </li>
+           
+        <li class="ct">
+            
+        </li>
+    </ul>
+    </div>
     <div>
-        <h2>Editar Perfil</h2>
+        <form class="form" action ""method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form.as_table }}
+            
         
-       
-        <a href="{% url 'UserAppPaginaDos' %}" class="btn-back">Volver</a>
+        <input type="Submit" value="Mofificar">
+
+
+        <br>
+        
+        </form>
+        <button id="borrar" id="btnSuccess" >BORRAR PERFIL</button>
 
         {% for mesage in messages %}
         <h5 class= "msg">{{mesage}}</h5> 
         {% endfor %}
-    </div>
-</section>
+        
+        
+    <div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/borrarperfil.js"></script>
+        
 
 </body>
 </html>
